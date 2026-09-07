@@ -911,14 +911,13 @@ script = ExtResource("7_km5ld")
 position = Vector2(-212, -184)
 script = ExtResource("8_i2t4f")
 
-[node name="Area2D" type="Area2D" parent="Weapons/arrowSpawner/arrow" unique_id=1430480797]
+[node name="StaticBody2D" type="StaticBody2D" parent="Weapons/arrowSpawner/arrow" unique_id=1563376525]
+position = Vector2(-982, -309)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Weapons/arrowSpawner/arrow/Area2D" unique_id=612863583]
-position = Vector2(-1, 0)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Weapons/arrowSpawner/arrow/StaticBody2D" unique_id=612863583]
+position = Vector2(981, 309)
 rotation = 1.5707964
 shape = SubResource("CapsuleShape2D_k0vvw")
 
 [node name="Sprite2D" type="Sprite2D" parent="Weapons/arrowSpawner/arrow" unique_id=1204956282]
 texture = ExtResource("7_n6hdu")
-
-[connection signal="body_entered" from="Weapons/arrowSpawner/arrow/Area2D" to="Weapons/arrowSpawner/arrow" method="_on_area_2d_body_entered"]

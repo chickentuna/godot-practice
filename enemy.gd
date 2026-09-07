@@ -4,11 +4,11 @@ const SPEED = 100
 var hero
 
 func _ready() -> void:
-	pass
+	hero = get_node("/root/Global/hero").get_children(false)[0]
 
 func _physics_process(delta: float) -> void:
 	if hero == null:
-		hero = get_node("/root/Global/hero").get_children(false)[0]
+		return
 	var direction := global_position.direction_to(hero.global_position)
 	velocity = direction * SPEED
 	move_and_slide()
