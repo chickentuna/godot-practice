@@ -6,9 +6,11 @@
 [ext_resource type="Texture2D" uid="uid://b3u7hst2ehapg" path="res://Warrior_Idle.png" id="4_1ainy"]
 [ext_resource type="Texture2D" uid="uid://w5vna7q6u8jf" path="res://Warrior_Run.png" id="5_n6hdu"]
 [ext_resource type="Script" uid="uid://7m8bdv0ipygr" path="res://spawner.gd" id="6_1ainy"]
+[ext_resource type="Script" uid="uid://bfhb0oguqokin" path="res://weapons.gd" id="7_8cye3"]
 [ext_resource type="Script" uid="uid://ban6c7cdnbq2s" path="res://arrow_spawner.gd" id="7_km5ld"]
 [ext_resource type="Texture2D" uid="uid://dn3nfpx47ksr1" path="res://Arrow.png" id="7_n6hdu"]
 [ext_resource type="Script" uid="uid://dtioft3h2njl3" path="res://arrow.gd" id="8_i2t4f"]
+[ext_resource type="Script" uid="uid://be7quxc3hofbc" path="res://sword.gd" id="11_2orkt"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vonw3"]
 texture = ExtResource("2_vonw3")
@@ -860,6 +862,7 @@ tile_set = SubResource("TileSet_3ottf")
 position = Vector2(736, -416)
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="hero" unique_id=520237250]
+motion_mode = 1
 script = ExtResource("3_f2txt")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="hero/CharacterBody2D" unique_id=1706878593]
@@ -902,6 +905,7 @@ script = ExtResource("6_1ainy")
 
 [node name="Weapons" type="Node2D" parent="." unique_id=1835960948]
 position = Vector2(736, -416)
+script = ExtResource("7_8cye3")
 
 [node name="arrowSpawner" type="Node2D" parent="Weapons" unique_id=1116672776]
 position = Vector2(246, 725)
@@ -920,5 +924,9 @@ shape = SubResource("CapsuleShape2D_k0vvw")
 
 [node name="Sprite2D" type="Sprite2D" parent="Weapons/arrowSpawner/arrow" unique_id=1204956282]
 texture = ExtResource("7_n6hdu")
+
+[node name="sword" type="Node2D" parent="Weapons" unique_id=1185256027]
+position = Vector2(-256, 0)
+script = ExtResource("11_2orkt")
 
 [connection signal="body_entered" from="Weapons/arrowSpawner/arrow/Area2D" to="Weapons/arrowSpawner/arrow" method="_on_area_2d_body_entered"]

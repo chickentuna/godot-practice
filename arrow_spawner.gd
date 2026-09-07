@@ -18,12 +18,24 @@ func get_closest_enemy(hero: Node) -> Node:
 			closest_dist = enemy_dist
 	return closest_enemy
 
+func get_arrow_level() -> int:
+	var weapons := get_node("/root/Global/Weapons")
+	var arrow_level: int = weapons.arrow_level
+	return arrow_level
+
+func get_spawn_delay_s():
+	var weapons := get_node("/root/Global/Weapons")
+	var arrow_level := get_arrow_level()
+	return spawn_delay_s * 1/arrow_level
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	spawn_timer -= delta
-	if (spawn_timer > 0):
+	if (spawn_timer > 0 or get_arrow_level() < 1):
 		return
-	spawn_timer = spawn_delay_s
+	
+	
+	spawn_timer = get_spawn_delay_s()
 	var hero := get_node("/root/Global/hero").get_children(false)[0]
 	var enemy := get_closest_enemy(hero)
 	if enemy == null:
