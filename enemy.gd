@@ -1,10 +1,12 @@
 class_name Enemy extends CharacterBody2D
+@onready var sprite = $AnimatedSprite2D
 
 const SPEED = 100
 var hero
 
 func _ready() -> void:
 	hero = get_node("/root/Global/hero").get_children(false)[0]
+	sprite.play("default")
 
 func _physics_process(delta: float) -> void:
 	if hero == null:
