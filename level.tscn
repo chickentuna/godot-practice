@@ -851,6 +851,8 @@ height = 46.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_wi3yo"]
 
+[sub_resource type="AudioStream" id="AudioStream_h6smj"]
+
 [node name="Global" type="Node2D" unique_id=322966590]
 
 [node name="terrain" type="Node2D" parent="." unique_id=998860427]
@@ -965,6 +967,11 @@ texture = ExtResource("12_aicyk")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Weapons/hammerSpawner/hammer/sprite/Area2D" unique_id=1924484661]
 scale = Vector2(2.6799903, 2.3599951)
 shape = SubResource("CircleShape2D_wi3yo")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=658772709]
+unique_name_in_owner = true
+stream = SubResource("AudioStream_h6smj")
+max_polyphony = 32
 
 [connection signal="body_entered" from="Weapons/arrowSpawner/arrow/Area2D" to="Weapons/arrowSpawner/arrow" method="_on_area_2d_body_entered"]
 [connection signal="body_entered" from="Weapons/hammerSpawner/hammer/sprite/Area2D" to="Weapons/hammerSpawner/hammer" method="_on_area_2d_body_entered"]

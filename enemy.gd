@@ -2,6 +2,8 @@ class_name Enemy extends CharacterBody2D
 @onready var sprite = $AnimatedSprite2D
 var dust_scene = preload("res://dust.tscn")
 
+var death_sound = preload("res://death.wav")
+
 const SPEED = 100
 var hero
 
@@ -9,6 +11,13 @@ func get_hit() -> void:
 	var dust := dust_scene.instantiate()
 	get_node("/root").add_child(dust)
 	dust.global_position = global_position
+	
+	#var stream := AudioStreamPlayer2D.new()
+	#get_node("/root").add_child(stream)
+	var stream := get_node("/root/Global/AudioStreamPlayer2D")
+	stream.stream = death_sound
+	stream.play()
+	
 	get_parent().queue_free()
 
 func _ready() -> void:
