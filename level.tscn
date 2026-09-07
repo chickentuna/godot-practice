@@ -912,7 +912,7 @@ position = Vector2(246, 725)
 script = ExtResource("7_km5ld")
 
 [node name="arrow" type="Node2D" parent="Weapons/arrowSpawner" unique_id=1154239709]
-position = Vector2(-212, -184)
+position = Vector2(-214, 11)
 script = ExtResource("8_i2t4f")
 
 [node name="Area2D" type="Area2D" parent="Weapons/arrowSpawner/arrow" unique_id=1430480797]
@@ -928,5 +928,7 @@ texture = ExtResource("7_n6hdu")
 [node name="sword" type="Node2D" parent="Weapons" unique_id=1185256027]
 position = Vector2(-256, 0)
 script = ExtResource("11_2orkt")
+
+[node name="hammerSpawner" type="Node2D" parent="Weapons" unique_id=1506512263]
 
 [connection signal="body_entered" from="Weapons/arrowSpawner/arrow/Area2D" to="Weapons/arrowSpawner/arrow" method="_on_area_2d_body_entered"]
