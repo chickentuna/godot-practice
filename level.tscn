@@ -906,7 +906,6 @@ script = ExtResource("6_1ainy")
 [node name="Weapons" type="Node2D" parent="." unique_id=1835960948]
 position = Vector2(736, -416)
 script = ExtResource("7_8cye3")
-sword_level = 17
 
 [node name="arrowSpawner" type="Node2D" parent="Weapons" unique_id=1116672776]
 position = Vector2(246, 725)
@@ -929,6 +928,7 @@ texture = ExtResource("7_n6hdu")
 [node name="sword" type="Node2D" parent="Weapons" unique_id=1185256027]
 position = Vector2(-256, 0)
 script = ExtResource("11_2orkt")
+distance = 200.0
 
 [node name="hammerSpawner" type="Node2D" parent="Weapons" unique_id=1506512263]
 

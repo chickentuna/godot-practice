@@ -7,7 +7,7 @@
 
 [node name="Node2D" type="Node2D" unique_id=456858614]
 
-[node name="Icon05" type="Sprite2D" parent="." unique_id=2061151355]
+[node name="Sprite" type="Sprite2D" parent="." unique_id=2061151355]
 texture = ExtResource("1_a85iw")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=829444780]

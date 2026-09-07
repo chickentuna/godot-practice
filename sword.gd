@@ -1,6 +1,8 @@
 extends Node2D
 
-@export var angVelocity :float = 4
+@export var angVelocity :float = 3
+@export var distance :float = 150
+@export var baseRotation :float = 0.8
 
 var swordScene = preload("res://projectile.tscn")
 var swords: Array[Node] = []
@@ -27,8 +29,10 @@ func spin_sword(delta: float) -> void:
 	for i in swords.size():
 		var sword := swords[i]
 		var curAngle = swordAngle + i * 2 * PI / swords.size()
-		var angVect := Vector2.from_angle(curAngle) * 100
+		var angVect := Vector2.from_angle(curAngle) * distance
 		sword.position = angVect
+		sword.rotation = curAngle + baseRotation
+		
 		
 	
 
