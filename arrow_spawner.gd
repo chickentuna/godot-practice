@@ -1,7 +1,7 @@
 extends Node2D
 
-@export var spawn_delay_s := 1.0
-var spawn_timer := spawn_delay_s
+@export var base_spawn_delay_s := 2.0
+var spawn_timer := base_spawn_delay_s
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -26,7 +26,7 @@ func get_arrow_level() -> int:
 func get_spawn_delay_s():
 	var weapons := get_node("/root/Global/Weapons")
 	var arrow_level := get_arrow_level()
-	return spawn_delay_s * 1/arrow_level
+	return base_spawn_delay_s * 1.0/arrow_level
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:

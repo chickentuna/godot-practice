@@ -5,11 +5,13 @@ extends Area2D
 func _ready() -> void:
 	pass # Replace with function body.
 
-func _on_body_entered(body):
-	if body is Enemy:
-		var enemy:Enemy = body
-		enemy.get_hit()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
+
+
+func _on_body_entered(body: Node2D) -> void:
+	if body is Enemy:
+		var enemy:Enemy = body
+		enemy.get_hit()

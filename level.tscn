@@ -11,6 +11,9 @@
 [ext_resource type="Texture2D" uid="uid://dn3nfpx47ksr1" path="res://Arrow.png" id="7_n6hdu"]
 [ext_resource type="Script" uid="uid://dtioft3h2njl3" path="res://arrow.gd" id="8_i2t4f"]
 [ext_resource type="Script" uid="uid://be7quxc3hofbc" path="res://sword.gd" id="11_2orkt"]
+[ext_resource type="Script" uid="uid://qu880m4t67uc" path="res://hammer_spawner.gd" id="12_8b0r0"]
+[ext_resource type="Texture2D" uid="uid://cuv71hsjbvrwy" path="res://Icon_Hammer.png" id="12_aicyk"]
+[ext_resource type="Script" uid="uid://6tcaectcl18n" path="res://hammer.gd" id="14_h6smj"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vonw3"]
 texture = ExtResource("2_vonw3")
@@ -846,6 +849,8 @@ b = Vector2(1920, 0)
 radius = 9.0
 height = 46.0
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_wi3yo"]
+
 [node name="Global" type="Node2D" unique_id=322966590]
 
 [node name="terrain" type="Node2D" parent="." unique_id=998860427]
@@ -859,6 +864,7 @@ tile_map_data = PackedByteArray("AAAAAP//AAAAAAIAAAABAP//AAABAAIAAAACAP//AAABAAI
 tile_set = SubResource("TileSet_3ottf")
 
 [node name="hero" type="Node2D" parent="." unique_id=912154085]
+unique_name_in_owner = true
 position = Vector2(736, -416)
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="hero" unique_id=520237250]
@@ -903,9 +909,14 @@ debug_color = Color(0.64705884, 0.33333334, 1, 0.80784315)
 position = Vector2(1504, -800)
 script = ExtResource("6_1ainy")
 
+[node name="Enemies" type="Node2D" parent="." unique_id=1302111494]
+
 [node name="Weapons" type="Node2D" parent="." unique_id=1835960948]
-position = Vector2(736, -416)
+unique_name_in_owner = true
+position = Vector2(736, 64)
 script = ExtResource("7_8cye3")
+arrow_level = 2
+hammer_level = 1
 
 [node name="arrowSpawner" type="Node2D" parent="Weapons" unique_id=1116672776]
 position = Vector2(246, 725)
@@ -931,5 +942,29 @@ script = ExtResource("11_2orkt")
 distance = 200.0
 
 [node name="hammerSpawner" type="Node2D" parent="Weapons" unique_id=1506512263]
+script = ExtResource("12_8b0r0")
+
+[node name="hammer" type="Node2D" parent="Weapons/hammerSpawner" unique_id=746033809]
+position = Vector2(-64, 736)
+script = ExtResource("14_h6smj")
+
+[node name="shadow" type="Line2D" parent="Weapons/hammerSpawner/hammer" unique_id=2063344202]
+position = Vector2(-32, 0)
+points = PackedVector2Array(4.145, 5.12, 58.075, 5.12)
+width = 8.0
+default_color = Color(0, 0, 0, 0.42745098)
+joint_mode = 2
+begin_cap_mode = 2
+end_cap_mode = 2
+
+[node name="sprite" type="Sprite2D" parent="Weapons/hammerSpawner/hammer" unique_id=286171691]
+texture = ExtResource("12_aicyk")
+
+[node name="Area2D" type="Area2D" parent="Weapons/hammerSpawner/hammer/sprite" unique_id=1489374754]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Weapons/hammerSpawner/hammer/sprite/Area2D" unique_id=1924484661]
+scale = Vector2(2.6799903, 2.3599951)
+shape = SubResource("CircleShape2D_wi3yo")
 
 [connection signal="body_entered" from="Weapons/arrowSpawner/arrow/Area2D" to="Weapons/arrowSpawner/arrow" method="_on_area_2d_body_entered"]
+[connection signal="body_entered" from="Weapons/hammerSpawner/hammer/sprite/Area2D" to="Weapons/hammerSpawner/hammer" method="_on_area_2d_body_entered"]

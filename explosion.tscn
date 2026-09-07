@@ -1,0 +1,88 @@
+[gd_scene format=3 uid="uid://csatvkq60rtf8"]
+
+[ext_resource type="Texture2D" uid="uid://deqpcsnboeyxw" path="res://Explosion_01.png" id="1_j4sxf"]
+[ext_resource type="Script" uid="uid://bcg1auv00br2y" path="res://explosion.gd" id="2_m5xho"]
+[ext_resource type="Script" uid="uid://dxottxbr56oah" path="res://area_2d.gd" id="3_kmxf7"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ilwjd"]
+atlas = ExtResource("1_j4sxf")
+region = Rect2(0, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y3bce"]
+atlas = ExtResource("1_j4sxf")
+region = Rect2(192, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u3yai"]
+atlas = ExtResource("1_j4sxf")
+region = Rect2(384, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fj6e6"]
+atlas = ExtResource("1_j4sxf")
+region = Rect2(576, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2h3vt"]
+atlas = ExtResource("1_j4sxf")
+region = Rect2(768, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yjxuc"]
+atlas = ExtResource("1_j4sxf")
+region = Rect2(960, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hvubb"]
+atlas = ExtResource("1_j4sxf")
+region = Rect2(1152, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aoqsc"]
+atlas = ExtResource("1_j4sxf")
+region = Rect2(1344, 0, 192, 192)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_l04k4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ilwjd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y3bce")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u3yai")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fj6e6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2h3vt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yjxuc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hvubb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aoqsc")
+}],
+"loop": 0,
+"name": &"default",
+"speed": 12.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_cf70p"]
+
+[node name="Node2D" type="Node2D" unique_id=1777456261]
+
+[node name="explosion" type="AnimatedSprite2D" parent="." unique_id=946330121]
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_l04k4")
+script = ExtResource("2_m5xho")
+
+[node name="Area2D" type="Area2D" parent="explosion" unique_id=532489306]
+script = ExtResource("3_kmxf7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="explosion/Area2D" unique_id=2132992989]
+scale = Vector2(1.6800001, 1.68)
+shape = SubResource("CircleShape2D_cf70p")
+
+[connection signal="animation_finished" from="explosion" to="explosion" method="_on_animation_finished"]
+[connection signal="body_entered" from="explosion/Area2D" to="explosion/Area2D" method="_on_body_entered"]

@@ -20,6 +20,6 @@ func _process(delta: float) -> void:
 			var enemy = enemy_scene.instantiate()
 			enemy.position = global_position + Vector2(i*100, 0)
 			enemy.get_children(true)[0].add_to_group("enemies")
-			get_parent().add_child(enemy)
+			get_node("../Enemies").add_child(enemy)
 		global_position.x = randf_range(300, 1300)
 		global_position.x = randf_range(300, 800)
