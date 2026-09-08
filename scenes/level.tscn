@@ -336,7 +336,6 @@ shape = SubResource("CircleShape2D_wi3yo")
 [node name="Music" type="AudioStreamPlayer2D" parent="." unique_id=658772709]
 stream = ExtResource("15_kih21")
 volume_db = 20.0
-autoplay = true
 max_polyphony = 32
 
 [node name="SoundManager" type="Node" parent="." unique_id=767835901]

@@ -2,15 +2,20 @@ class_name Enemy extends CharacterBody2D
 @onready var sprite = $AnimatedSprite2D
 var dust_scene = preload("res://scenes/dust.tscn")
 var death_sound: AudioStream = preload("res://sounds/death.wav")
+@onready var health_display_node: Node2D = $healthbar
+@onready var progress_bar: TextureProgressBar = $healthbar/ProgressBar
 
 const SPEED = 100
 var hero
 
+var max_health : int
 var health : int
 
 func get_hit() -> void:
 	health -= 50
-	if health < 0:
+	health_display_node.visible = true
+	progress_bar.value = (float(health) / float(max_health)) * 100
+	if health <= 0:
 		var dust := dust_scene.instantiate()
 		get_node("/root").add_child(dust)
 		dust.global_position = global_position
@@ -22,6 +27,7 @@ func get_hit() -> void:
 func _ready() -> void:
 	hero = get_node("/root/Global/hero").get_children(false)[0]
 	sprite.play("default")
+	health = max_health
 	
 
 func _physics_process(delta: float) -> void:

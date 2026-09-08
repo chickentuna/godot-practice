@@ -2,6 +2,8 @@
 
 [ext_resource type="Script" uid="uid://bpo6a56xbsxn5" path="res://scripts/enemy.gd" id="1_md0e3"]
 [ext_resource type="Texture2D" uid="uid://byx2xr18enca1" path="res://images/Warrior_Run_Red.png" id="2_4ra3w"]
+[ext_resource type="Texture2D" uid="uid://dcs7b003q2h64" path="res://images/Bars/SmallBar_Base.png" id="3_5uy6h"]
+[ext_resource type="Texture2D" uid="uid://bt4ww4g86l0u" path="res://images/Bars/SmallBar_Fill.png" id="4_c4w8v"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_iifgy"]
 atlas = ExtResource("2_4ra3w")
@@ -70,3 +72,36 @@ position = Vector2(0, 9.999999)
 scale = Vector2(1.8000007, -1.5621485)
 shape = SubResource("CircleShape2D_dxifv")
 debug_color = Color(0.87058824, 0.34901962, 0, 0.8627451)
+
+[node name="healthbar" type="Node2D" parent="CharacterBody2D" unique_id=1823658942]
+visible = false
+position = Vector2(-129, 0)
+
+[node name="healtStart" type="Sprite2D" parent="CharacterBody2D/healthbar" unique_id=2145769131]
+position = Vector2(89, -59)
+texture = ExtResource("3_5uy6h")
+region_enabled = true
+region_rect = Rect2(49, 22, 15, 19)
+
+[node name="healthMiddle" type="Sprite2D" parent="CharacterBody2D/healthbar" unique_id=883172331]
+position = Vector2(126, -59)
+texture = ExtResource("3_5uy6h")
+region_enabled = true
+region_rect = Rect2(128, 22, 64, 19)
+
+[node name="healthEnd" type="Sprite2D" parent="CharacterBody2D/healthbar" unique_id=208760658]
+position = Vector2(165, -59)
+texture = ExtResource("3_5uy6h")
+region_enabled = true
+region_rect = Rect2(256, 22, 15, 19)
+
+[node name="ProgressBar" type="TextureProgressBar" parent="CharacterBody2D/healthbar" unique_id=2033204164]
+offset_left = 90.0
+offset_top = -95.00001
+offset_right = 154.0
+offset_bottom = -31.000008
+scale = Vector2(1.15, 1.15)
+offset_transform_scale = Vector2(0.5, 0.5)
+offset_transform_visual_only = false
+value = 100.0
+texture_progress = ExtResource("4_c4w8v")

@@ -30,6 +30,8 @@ func _process(delta: float) -> void:
 			var enemy_parent = enemy_scene.instantiate()
 			get_node("../Enemies").add_child(enemy_parent)
 			var enemy: Enemy = enemy_parent.get_children(true)[0]
+			enemy.max_health = 100
+			enemy.health = 100
 			enemy.add_to_group("enemies")
 			
 			var spawn_from := Vector2(spawn_pad,-spawn_pad)
@@ -48,4 +50,3 @@ func _process(delta: float) -> void:
 			var splash := splash_scene.instantiate()
 			get_node("/root/Global/Splashes").add_child(splash)
 			splash.global_position = enemy.global_position
-			enemy.health = 10
