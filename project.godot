@@ -13,7 +13,7 @@ config_version=5
 config/name="TinySwords"
 run/main_scene="uid://biv62ok1xn5eo"
 config/features=PackedStringArray("4.7", "GL Compatibility")
-config/icon="res://icon.svg"
+config/icon="res://images/icon.svg"
 
 [display]
 
