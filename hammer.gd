@@ -4,6 +4,7 @@ class_name Hammer extends Node2D
 @export var speed : float= 0
 @export var dir_angle : float= 0
 
+var boom_sound = preload("res://boom.wav")
 var explosion_scene = preload("res://explosion.tscn")
 
 var time :float= 0
@@ -29,7 +30,7 @@ func _process(delta: float) -> void:
 		var explosion = explosion_scene.instantiate()
 		get_node("/root").add_child(explosion)
 		explosion.global_position = global_position
-		
+		get_node("/root/Global/SoundManager").play(boom_sound)
 		queue_free()
 
 

@@ -2,6 +2,7 @@ extends Node2D
 
 @export var base_spawn_delay_s := 2.0
 var spawn_timer := base_spawn_delay_s
+var fiou_sound = preload("res://fiou.wav")
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -46,3 +47,4 @@ func _process(delta: float) -> void:
 	arrow.rotation = Vector2(enemy.global_position - hero.global_position).angle()
 	add_child(arrow)
 	arrow.global_position = hero.global_position
+	get_node("/root/Global/SoundManager").play(fiou_sound)

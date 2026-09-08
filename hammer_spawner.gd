@@ -35,6 +35,5 @@ func _process(delta: float) -> void:
 		hammer.speed = rng.randf_range(100, 400)
 		hammer.global_position = hero.global_position
 
-	var stream := get_node("/root/Global/AudioStreamPlayer2D")
-	stream.stream = boing_sound
-	stream.play()
+	get_node("/root/Global/SoundManager").play(boing_sound)
+	

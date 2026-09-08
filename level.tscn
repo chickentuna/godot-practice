@@ -14,6 +14,7 @@
 [ext_resource type="Script" uid="uid://qu880m4t67uc" path="res://hammer_spawner.gd" id="12_8b0r0"]
 [ext_resource type="Texture2D" uid="uid://cuv71hsjbvrwy" path="res://Icon_Hammer.png" id="12_aicyk"]
 [ext_resource type="Script" uid="uid://6tcaectcl18n" path="res://hammer.gd" id="14_h6smj"]
+[ext_resource type="Script" uid="uid://bj4wrx8cblrbi" path="res://sound_manager.gd" id="15_v5j5c"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vonw3"]
 texture = ExtResource("2_vonw3")
@@ -212,7 +213,7 @@ height = 46.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_wi3yo"]
 
-[sub_resource type="AudioStream" id="AudioStream_h6smj"]
+[sub_resource type="AudioStreamWAV" id="AudioStreamWAV_hvgcl"]
 
 [node name="Global" type="Node2D" unique_id=322966590]
 
@@ -331,8 +332,12 @@ shape = SubResource("CircleShape2D_wi3yo")
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=658772709]
 unique_name_in_owner = true
-stream = SubResource("AudioStream_h6smj")
+stream = SubResource("AudioStreamWAV_hvgcl")
 max_polyphony = 32
+
+[node name="SoundManager" type="Node" parent="." unique_id=767835901]
+unique_name_in_owner = true
+script = ExtResource("15_v5j5c")
 
 [connection signal="body_entered" from="Weapons/arrowSpawner/arrow/Area2D" to="Weapons/arrowSpawner/arrow" method="_on_area_2d_body_entered"]
 [connection signal="body_entered" from="Weapons/hammerSpawner/hammer/sprite/Area2D" to="Weapons/hammerSpawner/hammer" method="_on_area_2d_body_entered"]
