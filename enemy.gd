@@ -12,8 +12,6 @@ func get_hit() -> void:
 	get_node("/root").add_child(dust)
 	dust.global_position = global_position
 	
-	#var stream := AudioStreamPlayer2D.new()
-	#get_node("/root").add_child(stream)
 	var stream := get_node("/root/Global/AudioStreamPlayer2D")
 	stream.stream = death_sound
 	stream.play()

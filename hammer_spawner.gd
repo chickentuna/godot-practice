@@ -5,6 +5,7 @@ var spawn_timer := spawn_delay_s
 @onready var weapons: Weapons = %Weapons
 @onready var hero_root: Node2D = %hero
 var rng = RandomNumberGenerator.new()
+var boing_sound = preload("res://boing.wav")
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -33,4 +34,7 @@ func _process(delta: float) -> void:
 		hammer.dir_angle = rng.randf_range(-PI, PI)
 		hammer.speed = rng.randf_range(100, 400)
 		hammer.global_position = hero.global_position
-		
+
+	var stream := get_node("/root/Global/AudioStreamPlayer2D")
+	stream.stream = boing_sound
+	stream.play()
