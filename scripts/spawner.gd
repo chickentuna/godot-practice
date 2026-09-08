@@ -22,4 +22,4 @@ func _process(delta: float) -> void:
 			enemy.get_children(true)[0].add_to_group("enemies")
 			get_node("../Enemies").add_child(enemy)
 		global_position.x = randf_range(300, 1300)
-		global_position.x = randf_range(300, 800)
+		global_position.y = randf_range(-300, -1024)
