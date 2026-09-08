@@ -10,7 +10,8 @@ var swordAngle = 0
 
 func drop_sword():
 	var s = swords.pop_back()
-	s.queue_free()
+	if s != null:
+		s.queue_free()
 
 func new_sword() -> Node:
 	var sword := swordScene.instantiate()

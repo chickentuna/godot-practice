@@ -48,4 +48,4 @@ func _process(delta: float) -> void:
 			var splash := splash_scene.instantiate()
 			get_node("/root/Global/Splashes").add_child(splash)
 			splash.global_position = enemy.global_position
-			enemy.health = 100
+			enemy.health = 10

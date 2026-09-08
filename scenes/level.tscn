@@ -284,7 +284,6 @@ script = ExtResource("6_h6wmr")
 unique_name_in_owner = true
 position = Vector2(736, 64)
 script = ExtResource("7_pqd0y")
-sword_level = 4
 
 [node name="arrowSpawner" type="Node2D" parent="Weapons" unique_id=1116672776]
 position = Vector2(246, 725)

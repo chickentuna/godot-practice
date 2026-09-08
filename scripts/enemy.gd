@@ -6,7 +6,7 @@ var death_sound: AudioStream = preload("res://sounds/death.wav")
 const SPEED = 100
 var hero
 
-var health := 100
+var health : int
 
 func get_hit() -> void:
 	health -= 50
