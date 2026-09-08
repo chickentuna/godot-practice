@@ -8,6 +8,10 @@ var swordScene = preload("res://scenes/projectile.tscn")
 var swords: Array[Node] = []
 var swordAngle = 0
 
+func drop_sword():
+	var s = swords.pop_back()
+	s.queue_free()
+
 func new_sword() -> Node:
 	var sword := swordScene.instantiate()
 	get_node("/root/Global/hero/CharacterBody2D").add_child(sword)
@@ -25,6 +29,9 @@ func get_sword_level() -> int:
 func spin_sword(delta: float) -> void:	
 	while get_sword_level() > swords.size():
 		new_sword()
+	while get_sword_level() < swords.size():
+		drop_sword()
+
 	swordAngle += delta * angVelocity
 	for i in swords.size():
 		var sword := swords[i]

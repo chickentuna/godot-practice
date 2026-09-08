@@ -231,6 +231,8 @@ unique_name_in_owner = true
 position = Vector2(736, -416)
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="hero" unique_id=520237250]
+collision_layer = 3
+collision_mask = 3
 motion_mode = 1
 script = ExtResource("3_82cfe")
 
@@ -249,9 +251,13 @@ position = Vector2(928, -576)
 scale = Vector2(5.52, 6.5200005)
 zoom = Vector2(0.525, 0.525)
 
+[node name="Splashes" type="Node2D" parent="." unique_id=576254944]
+
 [node name="walls" type="Node2D" parent="." unique_id=261846575]
 
 [node name="StaticBody2D" type="StaticBody2D" parent="walls" unique_id=668576811]
+collision_layer = 2
+collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="walls/StaticBody2D" unique_id=1736736229]
 shape = SubResource("SegmentShape2D_wi3yo")
@@ -278,8 +284,7 @@ script = ExtResource("6_h6wmr")
 unique_name_in_owner = true
 position = Vector2(736, 64)
 script = ExtResource("7_pqd0y")
-arrow_level = 2
-hammer_level = 1
+sword_level = 4
 
 [node name="arrowSpawner" type="Node2D" parent="Weapons" unique_id=1116672776]
 position = Vector2(246, 725)

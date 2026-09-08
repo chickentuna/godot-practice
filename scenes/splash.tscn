@@ -1,0 +1,80 @@
+[gd_scene format=3 uid="uid://c0k14p1tylwxg"]
+
+[ext_resource type="Texture2D" uid="uid://ky4qhb4tuige" path="res://images/Water Splash.png" id="1_10vqf"]
+[ext_resource type="Script" uid="uid://bcg1auv00br2y" path="res://scripts/explosion.gd" id="2_4rrho"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5svwm"]
+atlas = ExtResource("1_10vqf")
+region = Rect2(0, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_31efs"]
+atlas = ExtResource("1_10vqf")
+region = Rect2(192, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c8158"]
+atlas = ExtResource("1_10vqf")
+region = Rect2(384, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r4d6w"]
+atlas = ExtResource("1_10vqf")
+region = Rect2(576, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_651hb"]
+atlas = ExtResource("1_10vqf")
+region = Rect2(768, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x1bu2"]
+atlas = ExtResource("1_10vqf")
+region = Rect2(960, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_440nw"]
+atlas = ExtResource("1_10vqf")
+region = Rect2(1152, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3idxy"]
+atlas = ExtResource("1_10vqf")
+region = Rect2(1344, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_arxou"]
+atlas = ExtResource("1_10vqf")
+region = Rect2(1536, 0, 192, 192)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ft3mc"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5svwm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_31efs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c8158")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r4d6w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_651hb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x1bu2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_440nw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3idxy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_arxou")
+}],
+"loop": 0,
+"name": &"default",
+"speed": 12.0
+}]
+
+[node name="AnimatedSprite" type="AnimatedSprite2D" unique_id=2021428064]
+scale = Vector2(1.5, 1.5)
+sprite_frames = SubResource("SpriteFrames_ft3mc")
+script = ExtResource("2_4rrho")
