@@ -18,10 +18,17 @@ func get_hit() -> void:
 	health_display_node.visible = true
 	progress_bar.value = (float(health) / float(max_health)) * 100
 	if health <= 0:
+		# spawn dust
 		var dust := dust_scene.instantiate()
 		get_node("/root").add_child(dust)
 		dust.global_position = global_position
 		
+		# spawn coin
+		var coin := coin_scene.instantiate()
+		get_node("/root/Global/Coins").add_child(coin)
+		coin.global_position = global_position
+		
+		# die
 		get_node("/root/Global/SoundManager").play(death_sound, false)
 		get_parent().queue_free()
 

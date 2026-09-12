@@ -29,7 +29,7 @@ func get_enemies_on_screen() -> int:
 func _process(delta: float) -> void:
 	countdown -= delta
 	
-	if countdown <= 0:
+	if countdown <= 0 or get_enemies_on_screen() == 0:
 		countdown = current_max_countdown
 		current_max_countdown -= 1
 		if current_max_countdown <= 0:

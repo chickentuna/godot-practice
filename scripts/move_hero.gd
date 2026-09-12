@@ -1,4 +1,4 @@
-extends CharacterBody2D
+class_name Hero extends CharacterBody2D
 
 const BASE_SPEED = 300.0
 @onready var sprite = $AnimatedSprite2D

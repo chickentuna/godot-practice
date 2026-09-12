@@ -1,6 +1,43 @@
 [gd_scene format=3 uid="uid://c2bugas5ktcls"]
 
 [ext_resource type="Texture2D" uid="uid://bqph28d7ng15q" path="res://images/Gold_Resource_Highlight.png" id="1_d5gmh"]
+[ext_resource type="Script" uid="uid://q5gfrw1ei1qr" path="res://scenes/coin.gd" id="1_i64fm"]
+
+[sub_resource type="Animation" id="Animation_i64fm"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("sprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_11l1o"]
+resource_name = "bounce"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("sprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8),
+"transitions": PackedFloat32Array(0.5, 2, 0.5, 2, 0.5),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -50), Vector2(0, 0), Vector2(0, -25), Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_d14el"]
+_data = {
+&"RESET": SubResource("Animation_i64fm"),
+&"bounce": SubResource("Animation_11l1o")
+}
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0t63x"]
 atlas = ExtResource("1_d5gmh")
@@ -64,8 +101,23 @@ animations = [{
 "speed": 12.0
 }]
 
-[node name="coin" type="Node2D" unique_id=1435514224]
+[sub_resource type="CircleShape2D" id="CircleShape2D_4s2n3"]
 
-[node name="sparkle" type="AnimatedSprite2D" parent="." unique_id=560772319]
+[node name="coin" type="Node2D" unique_id=1435514224]
+script = ExtResource("1_i64fm")
+
+[node name="anim" type="AnimationPlayer" parent="." unique_id=1975370594]
+libraries/ = SubResource("AnimationLibrary_d14el")
+autoplay = &"bounce"
+
+[node name="sprite" type="AnimatedSprite2D" parent="." unique_id=560772319]
 sprite_frames = SubResource("SpriteFrames_4s2n3")
-frame_progress = 0.38888627
+autoplay = "default"
+frame_progress = 0.86652815
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1537870197]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=338828352]
+position = Vector2(-1, -1)
+scale = Vector2(1.0800006, 1.2399994)
+shape = SubResource("CircleShape2D_4s2n3")
