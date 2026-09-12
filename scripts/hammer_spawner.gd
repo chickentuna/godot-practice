@@ -35,5 +35,5 @@ func _process(delta: float) -> void:
 		hammer.speed = rng.randf_range(100, 400)
 		hammer.global_position = hero.global_position
 
-	get_node("/root/Global/SoundManager").play(boing_sound)
+	get_node("/root/Global/SoundManager").play(boing_sound, false)
 	

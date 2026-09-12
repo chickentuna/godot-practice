@@ -1,6 +1,8 @@
 class_name Enemy extends CharacterBody2D
 @onready var sprite = $AnimatedSprite2D
 var dust_scene = preload("res://scenes/dust.tscn")
+var coin_scene = preload("res://scenes/coin.tscn")
+
 var death_sound: AudioStream = preload("res://sounds/death.wav")
 @onready var health_display_node: Node2D = $healthbar
 @onready var progress_bar: TextureProgressBar = $healthbar/ProgressBar
@@ -12,7 +14,7 @@ var max_health : int
 var health : int
 
 func get_hit() -> void:
-	health -= 50
+	health -= 10
 	health_display_node.visible = true
 	progress_bar.value = (float(health) / float(max_health)) * 100
 	if health <= 0:
@@ -21,7 +23,6 @@ func get_hit() -> void:
 		dust.global_position = global_position
 		
 		get_node("/root/Global/SoundManager").play(death_sound, false)
-		
 		get_parent().queue_free()
 
 func _ready() -> void:
@@ -36,16 +37,20 @@ func _physics_process(delta: float) -> void:
 	
 	var target : Vector2 = hero.global_position
 	var goal_direction := global_position.direction_to(target)
-	var direction_steer_away_other := get_separation_vector()
-	
-	
+	var direction_steer_away_other := Vector2(randf_range(-1,1),randf_range(-1,1))
 	
 	var direction = (goal_direction * 2 + direction_steer_away_other).normalized()
 	
 	if not direction.is_zero_approx():
 		direction = direction.normalized()
 	velocity = direction * SPEED
-	sprite.flip_h = velocity.x < 0
+	var flip_threshold := 70
+	
+	if sprite.flip_h and velocity.x > flip_threshold:
+		print(velocity.x)
+		sprite.flip_h = false
+	elif not sprite.flip_h and velocity.x < -flip_threshold:
+		sprite.flip_h = true
 		
 	move_and_slide()
 	

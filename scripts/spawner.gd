@@ -1,8 +1,9 @@
 extends Node2D
 
-@export var MAX_COUNTDOWN = 1.0
-var countdown := 1.0
-@export var n_enemies := 4
+@export var current_max_countdown:float = 10
+var countdown : float = 0
+var spawn_n := 1
+
 
 var enemy_scene = preload("res://scenes/enemy.tscn")
 var splash_scene = preload("res://scenes/splash.tscn")
@@ -20,13 +21,21 @@ func _ready() -> void:
 	global_position.y = 0
 	pass # Replace with function body.
 
+func get_enemies_on_screen() -> int:
+	var enemies := get_tree().get_nodes_in_group("enemies")
+	return enemies.size()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	countdown -= delta
+	
 	if countdown <= 0:
-		countdown = MAX_COUNTDOWN
-		for i in range(n_enemies):
+		countdown = current_max_countdown
+		current_max_countdown -= 1
+		if current_max_countdown <= 0:
+			current_max_countdown = 10
+			spawn_n += 1
+		for i in range(spawn_n):
 			var enemy_parent = enemy_scene.instantiate()
 			get_node("../Enemies").add_child(enemy_parent)
 			var enemy: Enemy = enemy_parent.get_children(true)[0]
