@@ -193,6 +193,9 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_4s2n3"]
 radius = 19.62
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_tuxl7"]
+radius = 22.022715
+
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_wi3yo"]
 a = Vector2(1920, -1152)
 b = Vector2(0, -1152)
@@ -247,6 +250,15 @@ frame_progress = 0.32515323
 position = Vector2(0, 18)
 shape = SubResource("CircleShape2D_4s2n3")
 debug_color = Color(0.87058824, 0.34901962, 0, 0.8627451)
+
+[node name="Area2D" type="Area2D" parent="hero/CharacterBody2D" unique_id=1112998401]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hero/CharacterBody2D/Area2D" unique_id=290838466]
+position = Vector2(0, 18)
+shape = SubResource("CircleShape2D_tuxl7")
+
+[node name="Timer" type="Timer" parent="hero/CharacterBody2D" unique_id=666972621]
+one_shot = true
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=2039603200]
 position = Vector2(928, -576)
@@ -345,5 +357,7 @@ max_polyphony = 32
 unique_name_in_owner = true
 script = ExtResource("16_w3o6u")
 
+[connection signal="body_entered" from="hero/CharacterBody2D/Area2D" to="hero/CharacterBody2D" method="_on_area_2d_body_entered"]
+[connection signal="timeout" from="hero/CharacterBody2D/Timer" to="hero/CharacterBody2D" method="_on_hit_cd_timeout"]
 [connection signal="body_entered" from="Weapons/arrowSpawner/arrow/Area2D" to="Weapons/arrowSpawner/arrow" method="_on_area_2d_body_entered"]
 [connection signal="body_entered" from="Weapons/hammerSpawner/hammer/sprite/Area2D" to="Weapons/hammerSpawner/hammer" method="_on_area_2d_body_entered"]

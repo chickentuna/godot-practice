@@ -2,7 +2,11 @@ class_name Hero extends CharacterBody2D
 
 const BASE_SPEED = 300.0
 @onready var sprite = $AnimatedSprite2D
+@onready var collidion_detector = $Area2D
+@onready var hit_cd_timer = $Timer
 @export var speedMod := 1
+
+@export var hp := 1
 
 func _ready() -> void:
 	sprite.play("idle")
@@ -37,6 +41,15 @@ func _physics_process(delta: float) -> void:
 		sprite.flip_h = false
 	if inputVect.x < 0:
 		sprite.flip_h = true
-	
-
 	move_and_slide()
+
+func _on_area_2d_body_entered(body: Node2D) -> void:
+	if body is Enemy:
+		hp -= 1
+		if hp <= 0:
+			pass
+		collidion_detector.scale = Vector2(0, 0)
+		hit_cd_timer.start(1)
+
+func _on_hit_cd_timeout() -> void:
+	collidion_detector.scale = Vector2(1, 1)
