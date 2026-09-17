@@ -3,6 +3,7 @@ extends Node2D
 @export var current_max_countdown:float = 10
 var countdown : float = 0
 var spawn_n := 1
+var enemy_health = 50
 
 
 var enemy_scene = preload("res://scenes/enemy.tscn")
@@ -10,6 +11,10 @@ var splash_scene = preload("res://scenes/splash.tscn")
 
 var spawn_pad := 0
 var map_end := Vector2(1920 - spawn_pad, -1152 + spawn_pad)
+
+func increase_difficulty():
+	enemy_health += 50
+	spawn_n += 1
 
 func _draw() -> void:
 	#draw_rect(Rect2(spawn_pad,-spawn_pad,map_end.x - spawn_pad,map_end.y + spawn_pad), Color.AQUAMARINE, true, 2)
@@ -34,13 +39,14 @@ func _process(delta: float) -> void:
 		current_max_countdown -= 1
 		if current_max_countdown <= 0:
 			current_max_countdown = 10
-			spawn_n += 1
+		increase_difficulty()
 		for i in range(spawn_n):
 			var enemy_parent = enemy_scene.instantiate()
 			get_node("../Enemies").add_child(enemy_parent)
 			var enemy: Enemy = enemy_parent.get_children(true)[0]
-			enemy.max_health = 100
-			enemy.health = 100
+			enemy.max_health = enemy_health
+			enemy.health = enemy_health
+			enemy_health+=1
 			enemy.add_to_group("enemies")
 			
 			var spawn_from := Vector2(spawn_pad,-spawn_pad)

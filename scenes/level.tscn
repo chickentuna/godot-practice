@@ -357,6 +357,15 @@ max_polyphony = 32
 unique_name_in_owner = true
 script = ExtResource("16_w3o6u")
 
+[node name="HUD" type="CanvasLayer" parent="." unique_id=2091420042]
+
+[node name="GoldLabel" type="Label" parent="HUD" unique_id=2104016827]
+offset_left = 9.0
+offset_top = 3.0
+offset_right = 63.0
+offset_bottom = 26.0
+text = "Gold: 0"
+
 [connection signal="body_entered" from="hero/CharacterBody2D/Area2D" to="hero/CharacterBody2D" method="_on_area_2d_body_entered"]
 [connection signal="timeout" from="hero/CharacterBody2D/Timer" to="hero/CharacterBody2D" method="_on_hit_cd_timeout"]
 [connection signal="body_entered" from="Weapons/arrowSpawner/arrow/Area2D" to="Weapons/arrowSpawner/arrow" method="_on_area_2d_body_entered"]

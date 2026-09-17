@@ -3,9 +3,20 @@ class_name Enemy extends CharacterBody2D
 var dust_scene = preload("res://scenes/dust.tscn")
 var coin_scene = preload("res://scenes/coin.tscn")
 
+var pain_sounds: Array[AudioStream] = [
+	preload("res://sounds/tchac.wav"),
+	preload("res://sounds/tchac2.wav"),
+	#preload("res://sounds/tchac3.wav"), #bof
+	preload("res://sounds/aie.wav"),
+	preload("res://sounds/aie2.wav")
+]
+
 var death_sound: AudioStream = preload("res://sounds/death.wav")
 @onready var health_display_node: Node2D = $healthbar
 @onready var progress_bar: TextureProgressBar = $healthbar/ProgressBar
+
+var MAX_RED_COUNTDOWN:float = 0.5
+var red_countdown:float = 0
 
 const SPEED = 100
 var hero
@@ -14,7 +25,13 @@ var max_health : int
 var health : int
 
 func get_hit() -> void:
+	red_countdown = MAX_RED_COUNTDOWN
 	health -= 10
+	var knock = 6
+	self.position.x += randf_range(-knock,knock)
+	self.position.y += randf_range(-knock,knock)
+	 #TODO: we should dot product to have him move side to side only rather than front and back
+	
 	health_display_node.visible = true
 	progress_bar.value = (float(health) / float(max_health)) * 100
 	if health <= 0:
@@ -31,6 +48,9 @@ func get_hit() -> void:
 		# die
 		get_node("/root/Global/SoundManager").play(death_sound, false)
 		get_parent().queue_free()
+	else:
+		var idx = randi_range(0,pain_sounds.size()-1)
+		get_node("/root/Global/SoundManager").play(pain_sounds[idx], false)
 
 func _ready() -> void:
 	hero = get_node("/root/Global/hero").get_children(false)[0]
@@ -58,8 +78,17 @@ func _physics_process(delta: float) -> void:
 		sprite.flip_h = false
 	elif not sprite.flip_h and velocity.x < -flip_threshold:
 		sprite.flip_h = true
-		
+	
 	move_and_slide()
+	
+	# colour
+	red_countdown = red_countdown - delta
+	if red_countdown < 0:
+		red_countdown = 0.0
+	var red_prog = inverse_lerp(0.0, MAX_RED_COUNTDOWN, red_countdown)
+	
+	get_node("AnimatedSprite2D").modulate = Color(1, 1-red_prog, 1-red_prog, 1)
+
 	
 func get_separation_vector() -> Vector2:
 	var enemies := get_node("/root/Global/Enemies").get_children()

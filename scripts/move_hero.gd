@@ -5,8 +5,11 @@ const BASE_SPEED = 300.0
 @onready var collidion_detector = $Area2D
 @onready var hit_cd_timer = $Timer
 @export var speedMod := 1
+@export var gold := 0
 
 @export var hp := 1
+
+var coin_sound: AudioStream = preload("res://sounds/DIIing.wav")
 
 func _ready() -> void:
 	sprite.play("idle")
@@ -53,3 +56,9 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 
 func _on_hit_cd_timeout() -> void:
 	collidion_detector.scale = Vector2(1, 1)
+
+func give_gold():
+	gold += 1
+	var label:Label =get_node("/root/Global/HUD/GoldLabel")
+	label.text = 'Gold: ' + str(gold)
+	get_node("/root/Global/SoundManager").play(coin_sound, false)

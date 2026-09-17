@@ -121,3 +121,5 @@ frame_progress = 0.86652815
 position = Vector2(-1, -1)
 scale = Vector2(1.0800006, 1.2399994)
 shape = SubResource("CircleShape2D_4s2n3")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
