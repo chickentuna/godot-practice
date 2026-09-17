@@ -236,8 +236,8 @@ unique_name_in_owner = true
 position = Vector2(736, -416)
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="hero" unique_id=520237250]
-collision_layer = 3
-collision_mask = 3
+collision_layer = 2
+collision_mask = 2
 motion_mode = 1
 script = ExtResource("3_82cfe")
 

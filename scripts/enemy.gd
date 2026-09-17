@@ -28,9 +28,15 @@ func get_hit() -> void:
 	red_countdown = MAX_RED_COUNTDOWN
 	health -= 10
 	var knock = 6
-	self.position.x += randf_range(-knock,knock)
-	self.position.y += randf_range(-knock,knock)
-	 #TODO: we should dot product to have him move side to side only rather than front and back
+	var normal: Vector2
+	if randf() < 0.5:
+		normal = Vector2(-velocity.y, velocity.x)
+	else:
+		normal = Vector2(velocity.y, -velocity.x) 
+	normal = normal.normalized()
+	
+	self.position.x += normal.x * knock
+	self.position.y += normal.y * knock
 	
 	health_display_node.visible = true
 	progress_bar.value = (float(health) / float(max_health)) * 100
@@ -74,7 +80,6 @@ func _physics_process(delta: float) -> void:
 	var flip_threshold := 70
 	
 	if sprite.flip_h and velocity.x > flip_threshold:
-		print(velocity.x)
 		sprite.flip_h = false
 	elif not sprite.flip_h and velocity.x < -flip_threshold:
 		sprite.flip_h = true

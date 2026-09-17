@@ -116,6 +116,8 @@ autoplay = "default"
 frame_progress = 0.86652815
 
 [node name="Area2D" type="Area2D" parent="." unique_id=1537870197]
+collision_layer = 2
+collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=338828352]
 position = Vector2(-1, -1)
