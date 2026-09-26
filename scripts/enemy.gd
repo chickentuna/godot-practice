@@ -15,7 +15,7 @@ var death_sound: AudioStream = preload("res://sounds/death.wav")
 @onready var health_display_node: Node2D = $healthbar
 @onready var progress_bar: TextureProgressBar = $healthbar/ProgressBar
 
-var MAX_RED_COUNTDOWN:float = 0.5
+var MAX_RED_COUNTDOWN:float = 0.1
 var red_countdown:float = 0
 
 const SPEED = 100
