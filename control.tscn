@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://bhsiopflrfl2p"]
+
+[ext_resource type="Texture2D" uid="uid://cnyw8hnalq85e" path="res://images/UI/Banners/Banner.png" id="1_0fbet"]
+
+[node name="Control" type="Control" unique_id=22599648]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="NinePatchRect" type="NinePatchRect" parent="." unique_id=368705361]
+layout_mode = 0
+offset_left = 369.0
+offset_top = 37.0
+offset_right = 783.0
+offset_bottom = 379.0
+texture = ExtResource("1_0fbet")
+region_rect = Rect2(0, 0, 248, 243)
+patch_margin_left = 100
+patch_margin_top = 68
+patch_margin_right = 84
+patch_margin_bottom = 111
+axis_stretch_horizontal = 2
+axis_stretch_vertical = 2
