@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://c6woksjbh43a"]
+
+[ext_resource type="Script" uid="uid://coxp5dsbskwkn" path="res://scenes/splash_screen.gd" id="1_n4g2v"]
+
+[node name="SplashScreen" type="Control" unique_id=405996732]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_n4g2v")
+
+[node name="Play" type="Button" parent="." unique_id=1049157822]
+layout_mode = 0
+offset_left = 568.0
+offset_top = 295.00003
+offset_right = 609.0
+offset_bottom = 326.00003
+rotation = -0.05042328
+text = "Play"
+
+[connection signal="pressed" from="Play" to="." method="_on_play_pressed"]

@@ -1,0 +1,51 @@
+[gd_scene format=3 uid="uid://d0v15niyf8e8j"]
+
+[ext_resource type="Script" uid="uid://clis57qs8eblo" path="res://scenes/upgrades.gd" id="1_a0ma6"]
+[ext_resource type="Texture2D" uid="uid://bwvfqixb5axb1" path="res://images/Icon_04.png" id="2_usctq"]
+[ext_resource type="Script" uid="uid://b11ajhkuk1hnx" path="res://scenes/upgrade.gd" id="3_15hgd"]
+
+[node name="Upgrades" type="Control" unique_id=777033155]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_a0ma6")
+
+[node name="Ded" type="Label" parent="." unique_id=1761206797]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.035
+anchor_bottom = 0.035
+offset_left = 578.0
+offset_top = 36.999985
+offset_right = 577.68
+offset_bottom = 37.319984
+rotation = 0.0026017353
+text = "u ded"
+
+[node name="Gold" type="Label" parent="." unique_id=1411529488]
+layout_mode = 0
+offset_left = 564.0
+offset_top = 59.0
+offset_right = 609.0
+offset_bottom = 82.0
+text = "Gold: "
+
+[node name="upgrade_button" type="Button" parent="." unique_id=1248550551]
+layout_mode = 0
+offset_left = 267.0
+offset_top = 316.0
+offset_right = 339.0
+offset_bottom = 388.0
+icon = ExtResource("2_usctq")
+script = ExtResource("3_15hgd")
+metadata/quantity = 1.0
+metadata/price = 5
+metadata/type = &"health"
+
+[node name="Label" type="Label" parent="upgrade_button" unique_id=1158468417]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0

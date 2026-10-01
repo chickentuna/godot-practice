@@ -13,3 +13,10 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
+
+func get_save() -> Dictionary:
+	return {
+		"sword_level": sword_level,
+		"arrow_level": arrow_level,
+		"hammer_level": hammer_level
+	}

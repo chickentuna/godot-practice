@@ -16,6 +16,8 @@
 [ext_resource type="Texture2D" uid="uid://cuv71hsjbvrwy" path="res://images/Icon_Hammer.png" id="14_7agi7"]
 [ext_resource type="AudioStream" uid="uid://vqmm1teijldc" path="res://music/Mischief Maker.mp3" id="15_kih21"]
 [ext_resource type="Script" uid="uid://bj4wrx8cblrbi" path="res://scripts/sound_manager.gd" id="16_w3o6u"]
+[ext_resource type="Texture2D" uid="uid://4du8m6k1vu06" path="res://images/Bars/BigBar_Base.png" id="17_gunhw"]
+[ext_resource type="Texture2D" uid="uid://bklrmknol8cjy" path="res://images/Bars/BigBar_Fill.png" id="18_82cfe"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vonw3"]
 texture = ExtResource("2_ux5qa")
@@ -222,6 +224,7 @@ height = 46.0
 [node name="terrain" type="Node2D" parent="." unique_id=998860427]
 
 [node name="background" type="Sprite2D" parent="terrain" unique_id=1933895821]
+position = Vector2(-1, 0)
 scale = Vector2(999, 999)
 texture = ExtResource("1_arp2o")
 
@@ -365,6 +368,43 @@ offset_top = 3.0
 offset_right = 63.0
 offset_bottom = 26.0
 text = "Gold: 0"
+
+[node name="healthbar" type="Node2D" parent="HUD" unique_id=2073709619]
+
+[node name="healtStart" type="Sprite2D" parent="HUD/healthbar" unique_id=1296466438]
+position = Vector2(13, 57)
+texture = ExtResource("17_gunhw")
+region_enabled = true
+region_rect = Rect2(40, 9, 24, 51)
+
+[node name="healthMiddle" type="Sprite2D" parent="HUD/healthbar" unique_id=1511770061]
+position = Vector2(56, 57)
+texture = ExtResource("17_gunhw")
+region_enabled = true
+region_rect = Rect2(128, 9, 64, 51)
+
+[node name="healthMiddle" type="Sprite2D" parent="HUD/healthbar/healthMiddle" unique_id=1499131257]
+position = Vector2(63, 0)
+texture = ExtResource("17_gunhw")
+region_enabled = true
+region_rect = Rect2(128, 9, 64, 51)
+
+[node name="healthEnd" type="Sprite2D" parent="HUD/healthbar" unique_id=441691057]
+position = Vector2(162, 57)
+texture = ExtResource("17_gunhw")
+region_enabled = true
+region_rect = Rect2(255.43129, 9, 24.56871, 51)
+
+[node name="ProgressBar" type="TextureProgressBar" parent="HUD/healthbar" unique_id=1411712561]
+offset_left = 12.0
+offset_top = 23.0
+offset_right = 76.0
+offset_bottom = 87.0
+scale = Vector2(2.365, 1)
+offset_transform_scale = Vector2(0.5, 0.5)
+offset_transform_visual_only = false
+value = 100.0
+texture_progress = ExtResource("18_82cfe")
 
 [connection signal="body_entered" from="hero/CharacterBody2D/Area2D" to="hero/CharacterBody2D" method="_on_area_2d_body_entered"]
 [connection signal="timeout" from="hero/CharacterBody2D/Timer" to="hero/CharacterBody2D" method="_on_hit_cd_timeout"]
