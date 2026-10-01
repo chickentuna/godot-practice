@@ -8,7 +8,7 @@ font = ExtResource("2_62e2m")
 font_size = 87
 font_color = Color(0, 0, 0, 1)
 
-[node name="Control" type="Control" unique_id=22599648]
+[node name="Banner" type="Control" unique_id=22599648]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0

@@ -80,7 +80,7 @@ func get_save() -> Dictionary:
 	return {
 		"gold": gold,
 		"speed": speedMod,
-		"max_hp": max_hp
+		"health": max_hp
 	}
 
 func save_game():
