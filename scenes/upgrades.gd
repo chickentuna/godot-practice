@@ -45,15 +45,16 @@ func buy_upgrade(type, quantity:int, price:int) -> bool:
 func save_game():
 	var save: Dictionary = {
 		"hero": {
-			"max_hp": health,
+			"health": health,
 			"gold": gold
 		},
 		"weapons": {
 			"arrow_level": arrow_level,
-			"hammer_level": arrow_level,
-			"sword_level": arrow_level,
+			"hammer_level": hammer_level,
+			"sword_level": sword_level,
 		},
 	}
+	print("saving", save)
 	var save_file = FileAccess.open("user://savegame.save", FileAccess.WRITE)
 	save_file.store_line(JSON.stringify(save))
 	save_file.close()

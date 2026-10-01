@@ -15,6 +15,7 @@ var is_on_hit_cd := false
 var coin_sound: AudioStream = preload("res://sounds/DIIing.wav")
 
 func _ready() -> void:
+	load_save()
 	sprite.play("idle")
 
 
@@ -95,8 +96,27 @@ func save_game():
 	save_file.store_line(JSON.stringify(save))
 	save_file.close()
 	pass
+	
+func load_save():
+	var save_string := FileAccess.get_file_as_string("user://savegame.save")
+	if save_string == "":
+		return
+	var json = JSON.new()
+	var res := json.parse(save_string)
+	
+	print(json.data)
+	self.max_hp = json.data.hero.health
+	self.hp = self.max_hp
+	self.gold = json.data.hero.gold
+	get_node("/root/Global/Weapons").load_save(json.data.weapons)
+
+var is_deading := false
 
 func ded():
+	if (is_deading):
+		return
+	is_deading = true
+	print("ded")
 	save_game()
 	get_tree().change_scene_to_file("res://scenes/upgrades.tscn")
 	pass

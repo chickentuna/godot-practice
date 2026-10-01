@@ -16,3 +16,8 @@ func get_save() -> Dictionary:
 		"arrow_level": arrow_level,
 		"hammer_level": hammer_level
 	}
+
+func load_save(data):
+	self.sword_level = max(data.sword_level, 1)
+	self.arrow_level = data.arrow_level
+	self.hammer_level = data.hammer_level
