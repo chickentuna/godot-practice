@@ -55,7 +55,7 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body is Enemy:
 		if is_on_hit_cd:
 			return
-		hp -= 1
+		hp -= body.enemy_damage
 		var progress_bar: TextureProgressBar = get_node("/root/Global/HUD/healthbar/ProgressBar")
 		progress_bar.value = (float(hp) / float(max_hp)) * 100
 		if hp <= 0:

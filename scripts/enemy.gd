@@ -1,5 +1,6 @@
 class_name Enemy extends CharacterBody2D
 @onready var sprite = $AnimatedSprite2D
+@export var enemy_damage := 1
 var dust_scene = preload("res://scenes/dust.tscn")
 var coin_scene = preload("res://scenes/coin.tscn")
 
@@ -18,7 +19,7 @@ var death_sound: AudioStream = preload("res://sounds/death.wav")
 var MAX_RED_COUNTDOWN:float = 0.1
 var red_countdown:float = 0
 
-const SPEED = 100
+var SPEED := 100
 var hero
 
 var max_health : int
@@ -54,6 +55,8 @@ func get_hit() -> void:
 		# die
 		get_node("/root/Global/SoundManager").play(death_sound, false)
 		get_parent().queue_free()
+		
+		die()
 	else:
 		var idx = randi_range(0,pain_sounds.size()-1)
 		get_node("/root/Global/SoundManager").play(pain_sounds[idx], false)
@@ -94,14 +97,5 @@ func _physics_process(delta: float) -> void:
 	
 	get_node("AnimatedSprite2D").modulate = Color(1, 1-red_prog, 1-red_prog, 1)
 
-	
-func get_separation_vector() -> Vector2:
-	var enemies := get_node("/root/Global/Enemies").get_children()
-	var vector := Vector2(0,0)
-	for e_parent:Node2D in enemies:
-		var e: Enemy = e_parent.get_node("CharacterBody2D")
-		if e == self:
-			continue
-		var d := e.global_position.distance_to(global_position)
-		vector += e.global_position.direction_to(global_position) * 400/d
-	return vector / enemies.size()
+func die():
+	pass

@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://bpct0vyqjb477"]
+
+[node name="EndGame" type="Node2D" unique_id=242884300]
+
+[node name="Label" type="Label" parent="." unique_id=500947938]
+offset_left = 486.0
+offset_top = 254.0
+offset_right = 622.0
+offset_bottom = 322.0
+scale = Vector2(2, 2)
+text = "GG
+you did it reddit"
