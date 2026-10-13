@@ -301,7 +301,6 @@ script = ExtResource("6_h6wmr")
 unique_name_in_owner = true
 position = Vector2(736, 64)
 script = ExtResource("7_pqd0y")
-sword_level = 20
 
 [node name="arrowSpawner" type="Node2D" parent="Weapons" unique_id=1116672776]
 position = Vector2(246, 725)
@@ -354,6 +353,7 @@ shape = SubResource("CircleShape2D_wi3yo")
 [node name="Music" type="AudioStreamPlayer2D" parent="." unique_id=658772709]
 stream = ExtResource("15_kih21")
 volume_db = 14.0
+autoplay = true
 max_polyphony = 32
 
 [node name="SoundManager" type="Node" parent="." unique_id=767835901]
@@ -405,6 +405,13 @@ offset_transform_scale = Vector2(0.5, 0.5)
 offset_transform_visual_only = false
 value = 100.0
 texture_progress = ExtResource("18_82cfe")
+
+[node name="RoundLabel" type="Label" parent="HUD" unique_id=1578949565]
+offset_left = 9.0
+offset_top = 84.0
+offset_right = 63.0
+offset_bottom = 107.0
+text = "Round 0/20"
 
 [connection signal="body_entered" from="hero/CharacterBody2D/Area2D" to="hero/CharacterBody2D" method="_on_area_2d_body_entered"]
 [connection signal="timeout" from="hero/CharacterBody2D/Timer" to="hero/CharacterBody2D" method="_on_hit_cd_timeout"]

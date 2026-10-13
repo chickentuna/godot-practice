@@ -10,6 +10,7 @@ func play(stream: AudioStream, compound: bool = true) -> void:
 	var player = AudioStreamPlayer.new()
 	player.stream = stream
 	player.bus = "Master"
+	player.volume_db = -6
 	add_child(player)
 	player.finished.connect(player.queue_free)
 	player.play()

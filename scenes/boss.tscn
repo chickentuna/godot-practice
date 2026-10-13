@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://d1joqerde6iwn"]
 
-[ext_resource type="Script" uid="uid://6svnpu2am6ae" path="res://scenes/boss.gd" id="1_2cdgk"]
+[ext_resource type="Script" uid="uid://6svnpu2am6ae" path="res://scripts/boss.gd" id="1_2cdgk"]
 [ext_resource type="Texture2D" uid="uid://bqtvaynf8cks8" path="res://images/House1.png" id="2_2cdgk"]
 [ext_resource type="Texture2D" uid="uid://bsn7byhr50kyr" path="res://images/House2.png" id="3_qsl3t"]
 [ext_resource type="Texture2D" uid="uid://dcs7b003q2h64" path="res://images/Bars/SmallBar_Base.png" id="3_wqpjq"]
@@ -46,8 +46,8 @@ frame = 1
 frame_progress = 0.8116653
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="CharacterBody2D" unique_id=230079385]
-position = Vector2(0, 9.999999)
-scale = Vector2(1.8, -1.8)
+position = Vector2(0, 56)
+scale = Vector2(1.9600013, -1.96)
 shape = SubResource("CircleShape2D_dxifv")
 debug_color = Color(0.87058824, 0.34901962, 0, 0.8627451)
 

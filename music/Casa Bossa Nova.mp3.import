@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://ds7rtb7mm4kdq"
+path="res://.godot/imported/Casa Bossa Nova.mp3-f815f514a1e8426f565ed9198d5f1f51.mp3str"
+
+[deps]
+
+source_file="res://music/Casa Bossa Nova.mp3"
+dest_files=["res://.godot/imported/Casa Bossa Nova.mp3-f815f514a1e8426f565ed9198d5f1f51.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

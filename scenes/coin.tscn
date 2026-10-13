@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://c2bugas5ktcls"]
 
 [ext_resource type="Texture2D" uid="uid://bqph28d7ng15q" path="res://images/Gold_Resource_Highlight.png" id="1_d5gmh"]
-[ext_resource type="Script" uid="uid://q5gfrw1ei1qr" path="res://scenes/coin.gd" id="1_i64fm"]
+[ext_resource type="Script" uid="uid://q5gfrw1ei1qr" path="res://scripts/coin.gd" id="1_i64fm"]
 
 [sub_resource type="Animation" id="Animation_i64fm"]
 length = 0.001

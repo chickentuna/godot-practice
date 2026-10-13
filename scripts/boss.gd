@@ -1,11 +1,15 @@
 class_name Boss extends Enemy
 
+@export var boss_speed = 200
+var current_speed = 100
+var time = 0
+
 var pad := 0
 var map_end := Vector2(1920 - pad, -1152 + pad)
 
 func _init():
-	SPEED = 0
-	enemy_damage = 100
+	
+	enemy_damage = 20
 	
 var direction := Vector2(1, 1)
 
@@ -13,8 +17,11 @@ func die():
 	get_tree().change_scene_to_file("res://scenes/end_game.tscn")
 
 func _physics_process(delta: float) -> void:
-	velocity = direction * SPEED
+	time += delta
+	current_speed = boss_speed + (1+sin(time * 1))*200
+	velocity = direction * current_speed
 	move_and_slide()
+	
 	
 	if position.x > map_end.x:
 		direction = Vector2(-1, direction.y)

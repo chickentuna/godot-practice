@@ -25,10 +25,10 @@ var hero
 var max_health : int
 var health : int
 
-func get_hit() -> void:
+func get_hit(damage_mult: float = 1) -> void:
 	red_countdown = MAX_RED_COUNTDOWN
-	health -= 10
-	var knock = 6
+	health -= 10 * damage_mult
+	var knock = 0 #eloi though it was a bug :(
 	var normal: Vector2
 	if randf() < 0.5:
 		normal = Vector2(-velocity.y, velocity.x)

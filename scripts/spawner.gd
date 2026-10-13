@@ -5,14 +5,16 @@ var countdown : float = 0
 var max_spawn_count = 20
 var spawn_n := 150.0
 var enemy_health = 50
-var n_rounds := 48.0
+var n_rounds :float= 1
 var max_enemy_health := 200
 var n_rounds_until_max_health_attained = 50
-var boss_round = 50
+var boss_round = 25
 
 var enemy_scene = preload("res://scenes/enemy.tscn")
 var boss_scene = preload("res://scenes/boss.tscn")
 var splash_scene = preload("res://scenes/splash.tscn")
+
+var boss_music = preload("res://music/Le Grand Chase.mp3")
 
 var spawn_pad := 0
 var map_end := Vector2(1920 - spawn_pad, -1152 + spawn_pad)
@@ -36,7 +38,6 @@ func _draw() -> void:
 func _ready() -> void:
 	global_position.x = 0
 	global_position.y = 0
-	pass # Replace with function body.
 
 func get_enemies_on_screen() -> int:
 	var enemies := get_tree().get_nodes_in_group("enemies")
@@ -45,7 +46,9 @@ func get_enemies_on_screen() -> int:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	countdown -= delta
-	
+	var round_label:Label = get_node("/root/Global/HUD/RoundLabel")
+	round_label.text = "Round {}/{}".format([int(n_rounds) - 1, boss_round], "{}")
+			
 	if countdown <= 0 or get_enemies_on_screen() == 0:
 		if (n_rounds == boss_round):
 			spawn_boss()
@@ -64,10 +67,13 @@ func _process(delta: float) -> void:
 			spawn_enemy(enemy, enemy_health)
 
 func spawn_boss():
+	var music: AudioStreamPlayer2D = get_node("/root/Global/Music")
+	music.stream = boss_music
+	music.play(0)
 	var enemy_parent = boss_scene.instantiate()
 	get_node("../Enemies").add_child(enemy_parent)
 	var enemy: Enemy = enemy_parent.get_children(true)[0]
-	spawn_enemy(enemy, enemy_health * 100)
+	spawn_enemy(enemy, enemy_health * 50)
 
 func spawn_enemy(enemy: Node, enemy_health: int):
 	enemy.max_health = enemy_health

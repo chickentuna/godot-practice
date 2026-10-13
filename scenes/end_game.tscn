@@ -1,12 +1,86 @@
 [gd_scene format=3 uid="uid://bpct0vyqjb477"]
 
+[ext_resource type="Texture2D" uid="uid://de1pvdeyci155" path="res://images/PXL_20260925_112552806.jpg" id="1_5pifh"]
+[ext_resource type="FontFile" uid="uid://ck8pa5d1x8uqh" path="res://font/films.EXH_____.ttf" id="2_0h6i1"]
+[ext_resource type="AudioStream" uid="uid://pf2d3ycgbpe7" path="res://music/Who Likes to Party.mp3" id="4_5pifh"]
+[ext_resource type="Texture2D" uid="uid://bpsn1px76avwc" path="res://images/360_F_1414600144_Lsa07cCp7d9NJxBj8ugJnReTNOf2xcw1.png" id="4_plvne"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_n4g2v"]
+font = ExtResource("2_0h6i1")
+font_size = 99
+shadow_size = 7
+shadow_color = Color(0, 0, 0, 1)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_0h6i1"]
+load_path = "res://.godot/imported/thumbs-up-smiley-vector-1075395.png-cee6ac4858245304c28a66f0cfe5738c.ctex"
+
+[sub_resource type="Animation" id="Animation_i5uwy"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_0o8ri"]
+resource_name = "winner"
+length = 0.96666664
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.96666664),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, -6.283185307179586]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_nyuqq"]
+_data = {
+&"RESET": SubResource("Animation_i5uwy"),
+&"winner": SubResource("Animation_0o8ri")
+}
+
 [node name="EndGame" type="Node2D" unique_id=242884300]
 
+[node name="Pxl20260925112552806" type="Sprite2D" parent="." unique_id=986049602]
+position = Vector2(559, 419)
+texture = ExtResource("1_5pifh")
+
 [node name="Label" type="Label" parent="." unique_id=500947938]
-offset_left = 486.0
-offset_top = 254.0
-offset_right = 622.0
-offset_bottom = 322.0
-scale = Vector2(2, 2)
+offset_left = 89.0
+offset_top = 204.99998
+offset_right = 1208.0
+offset_bottom = 553.0
+scale = Vector2(0.8950002, 1.0549994)
 text = "GG
 you did it reddit"
+label_settings = SubResource("LabelSettings_n4g2v")
+
+[node name="ThumbsUpSmileyVector1075395" type="Sprite2D" parent="." unique_id=904397984]
+position = Vector2(1538, 304)
+scale = Vector2(0.20000002, 0.32)
+texture = SubResource("CompressedTexture2D_0h6i1")
+
+[node name="360F1414600144Lsa07cCp7d9nJxBj8UgJnReTnOf2Xcw1" type="Sprite2D" parent="." unique_id=1858314422]
+position = Vector2(759, 225)
+texture = ExtResource("4_plvne")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="360F1414600144Lsa07cCp7d9nJxBj8UgJnReTnOf2Xcw1" unique_id=1210072412]
+libraries/ = SubResource("AnimationLibrary_nyuqq")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1249757275]
+stream = ExtResource("4_5pifh")
+volume_db = 5.547
+autoplay = true

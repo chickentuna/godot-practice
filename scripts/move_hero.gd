@@ -17,6 +17,9 @@ var coin_sound: AudioStream = preload("res://sounds/DIIing.wav")
 func _ready() -> void:
 	load_save()
 	sprite.play("idle")
+	var label:Label = get_node("/root/Global/HUD/GoldLabel")
+	label.text = 'Gold: ' + str(gold)
+	get_node("/root/Global/SoundManager").play(coin_sound, false)
 
 
 func _physics_process(delta: float) -> void:
@@ -63,7 +66,7 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 			return
 		collision_detector.scale = Vector2(0, 0)
 		collision_detector.position = Vector2(-999999, -999999)
-		hit_cd_timer.start(1.0)
+		hit_cd_timer.start(0.25)
 		is_on_hit_cd = true
 
 func _on_hit_cd_timeout() -> void:
@@ -99,12 +102,20 @@ func save_game():
 	
 func load_save():
 	var save_string := FileAccess.get_file_as_string("user://savegame.save")
+	print("save_string: ")
+	print(save_string)
+	if save_string == "\n":
+		return
 	if save_string == "":
 		return
+	
 	var json = JSON.new()
 	var res := json.parse(save_string)
 	
 	print(json.data)
+	if "health" not in json.data.hero:
+		return
+	
 	self.max_hp = json.data.hero.health
 	self.hp = self.max_hp
 	self.gold = json.data.hero.gold

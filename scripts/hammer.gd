@@ -30,7 +30,7 @@ func _process(delta: float) -> void:
 		var explosion = explosion_scene.instantiate()
 		get_node("/root").add_child(explosion)
 		explosion.global_position = global_position
-		get_node("/root/Global/SoundManager").play(boom_sound)
+		get_node("/root/Global/SoundManager").play(boom_sound, false)
 		queue_free()
 
 

@@ -9,7 +9,11 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	pass
+	var hero: CharacterBody2D = get_node("/root/Global/hero/CharacterBody2D")
+	var distance_to_hero = hero.global_position.distance_to(global_position)
+	if distance_to_hero < 100:
+		var move = global_position.move_toward(hero.global_position, 360 * delta)
+		global_position = move
 
 
 func _on_area_2d_body_entered(body: Node2D) -> void:

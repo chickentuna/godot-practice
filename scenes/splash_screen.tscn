@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://c6woksjbh43a"]
 
-[ext_resource type="Script" uid="uid://coxp5dsbskwkn" path="res://scenes/splash_screen.gd" id="1_n4g2v"]
+[ext_resource type="Script" uid="uid://coxp5dsbskwkn" path="res://scripts/splash_screen.gd" id="1_n4g2v"]
 
 [sub_resource type="Animation" id="Animation_n4g2v"]
 length = 0.001
@@ -64,4 +64,21 @@ root_node = NodePath("../..")
 libraries/ = SubResource("AnimationLibrary_4gp4q")
 autoplay = &"rotatage"
 
+[node name="Clear save" type="Button" parent="." unique_id=2018197916]
+layout_mode = 1
+anchors_preset = -1
+offset_left = 530.99994
+offset_top = 429.0
+offset_right = 618.99994
+offset_bottom = 460.0
+rotation = -0.1432641
+pivot_offset_ratio = Vector2(0.5, 0.5)
+text = "Clear save"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Clear save" unique_id=1299585864]
+root_node = NodePath("../..")
+libraries/ = SubResource("AnimationLibrary_4gp4q")
+autoplay = &"rotatage"
+
 [connection signal="pressed" from="Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="Clear save" to="." method="_on_clear_save_pressed"]
